@@ -2,7 +2,7 @@ import { Request,Response } from "express"
 import { contactCreateServices } from "../services/contact/contactCreate.services"
 import { contactListService } from "../services/contact/contactList.services"
 import { contactListOneService } from "../services/contact/contactListOne.services"
-// import { contactUpdateService } from "../services/contact/contactUpdate.services"
+import { contactUpdateService } from "../services/contact/contactUpdate.services"
 import { contactDeleteService } from "../services/contact/contactDelete.services"
 
 const contactCreateController = async (req: Request, res: Response) => {
@@ -79,10 +79,31 @@ const contactCreateController = async (req: Request, res: Response) => {
      }
  }
 
+ const contactUpdateController = async (req: Request, res: Response) => {
+       
+    try{
+   
+         const {id} = req.params  
+         const {email,phone,name} = req.body
+       
+       const contact = await contactUpdateService({id,email,phone,name})
+   
+       res.status(200).json(contact)
+       }
+   
+    catch(error){
+       if(error instanceof Error){
+           return res.status(400).json({
+               message: error.message
+               })
+           }
+       }
+   }
+
    export{
     contactCreateController,
     contactDeleteController,
     contactListController,
     contactListOneController,
-
+    contactUpdateController
    }
