@@ -1,6 +1,6 @@
 import { Request,Response } from "express"
 import { userCreateServices } from "../services/user/userCreate.services"
-// import {userListService} from "../services/user/userList.services"
+import {userListService} from "../services/user/userList.services"
 // import { userOneListService } from "../services/user/userOneList.services"
 // import { userUpdateService } from "../services/user/userUpdate.services"
 import { userDeleteService } from "../services/user/userDelete.services"
@@ -23,22 +23,22 @@ const userCreateController = async (req: Request, res: Response) => {
        }
    }
 
-//    const userListController = async (req: Request, res: Response) => {
+   const userListController = async (req: Request, res: Response) => {
    
-//     try{
-//      const users = await userListService()
+    try{
+     const users = await userListService()
  
-//      res.status(200).json(users)
-//     }
+     res.status(200).json(users)
+    }
  
-//      catch(error){
-//          if(error instanceof Error){
-//              return res.status(400).json({
-//                  message: error.message
-//              })
-//          }
-//      }
-//  }
+     catch(error){
+         if(error instanceof Error){
+             return res.status(400).json({
+                 message: error.message
+             })
+         }
+     }
+ }
  
 //  const userListOneController = async (req: Request, res: Response) => {
  
@@ -119,4 +119,4 @@ const userCreateController = async (req: Request, res: Response) => {
 //      }
 
 
-   export{userCreateController,userDeleteController} 
+   export{userCreateController,userDeleteController,userListController} 
