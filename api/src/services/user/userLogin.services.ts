@@ -21,7 +21,9 @@ export const userLoginServices = async({email,password}: userLogin) => {
             {email:email},
             String(process.env.JWT_SECRET),
             {expiresIn: '1d'}
-        )
+        ),
+        user_id: account.id
+        
     }
        return token
 }
