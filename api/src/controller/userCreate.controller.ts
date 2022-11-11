@@ -1,8 +1,8 @@
 import { Request,Response } from "express"
 import { userCreateServices } from "../services/user/userCreate.services"
 import {userListService} from "../services/user/userList.services"
-// import { userOneListService } from "../services/user/userOneList.services"
-// import { userUpdateService } from "../services/user/userUpdate.services"
+import { userListOneService } from "../services/user/userListOne.services"
+import { userUpdateService } from "../services/user/userUpdate.services"
 import { userDeleteService } from "../services/user/userDelete.services"
 import { userLoginServices } from "../services/user/userLogin.services"
 
@@ -40,44 +40,44 @@ const userCreateController = async (req: Request, res: Response) => {
      }
  }
  
-//  const userListOneController = async (req: Request, res: Response) => {
+ const userListOneController = async (req: Request, res: Response) => {
  
-//      const {id} = req.params
-//      try{
-//       const users = await userOneListService(id)
+     const {id} = req.params
+     try{
+      const users = await userListOneService(id)
   
-//       res.status(200).json(users)
-//      }
+      res.status(200).json(users)
+     }
   
-//       catch(error){
-//           if(error instanceof Error){
-//               return res.status(400).json({
-//                   message: error.message
-//               })
-//           }
-//       }
-//   }
+      catch(error){
+          if(error instanceof Error){
+              return res.status(400).json({
+                  message: error.message
+              })
+          }
+      }
+  }
  
-//   const userUpdateController = async (req: Request, res: Response) => {
+  const userUpdateController = async (req: Request, res: Response) => {
      
-//      try{
+     try{
     
-//           const {id} = req.params  
-//           const {email,phone,password} = req.body
+          const {id} = req.params  
+          const {email,phone,password,name} = req.body
         
-//         const newUser = await userUpdateService({id,email,phone,password})
+        const newUser = await userUpdateService({id,email,phone,password,name})
     
-//         res.status(201).json(newUser)
-//         }
+        res.status(200).json(newUser)
+        }
     
-//      catch(error){
-//         if(error instanceof Error){
-//             return res.status(400).json({
-//                 message: error.message
-//                 })
-//             }
-//         }
-//     }
+     catch(error){
+        if(error instanceof Error){
+            return res.status(400).json({
+                message: error.message
+                })
+            }
+        }
+    }
  
     const userDeleteController = async (req: Request, res: Response) => {
  
@@ -117,4 +117,11 @@ const userCreateController = async (req: Request, res: Response) => {
      }
 
 
-   export{userCreateController,userDeleteController,userListController,userLoginController} 
+   export{
+    userCreateController,
+    userDeleteController,
+    userListController,
+    userLoginController,
+    userListOneController,
+    userUpdateController
+} 

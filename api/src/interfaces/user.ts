@@ -15,9 +15,11 @@ export interface creUser extends createUser{
 
 export interface updateUser{
     id:string
+    name:string
     email:string
     phone:string
     password:string
+    
 }
 
 export interface userLogin{
