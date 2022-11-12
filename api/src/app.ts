@@ -1,11 +1,15 @@
 import express from 'express'
 import { AppDataSource } from './database'
 import { router } from './routes'
+import swaggerUi from "swagger-ui-express"
+import swaggerDocument from "../swagger.json"
 
 const app = express()
-// const cors = require("cors")
+const cors = require("cors")
 
-// app.use(cors())
+app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+
+app.use(cors())
 app.use(express.json())
 
 app.use(router)

@@ -5,13 +5,14 @@ import { userListOneController } from "../controller/user.controller";
 import { userUpdateController } from "../controller/user.controller";
 import { userDeleteController } from "../controller/user.controller";
 import { userLoginController} from "../controller/user.controller";
-// import  {authUser}  from "../middlewares/authUser.middleware";
+import  {authUser}  from "..//middleware/authUser.middleware";
+
 
 export const userRoutes = Router()
 
 userRoutes.post("/",userCreateController)
 userRoutes.post("/login",userLoginController)
-userRoutes.get("/",userListController)
-userRoutes.patch("/:id",userUpdateController)
-userRoutes.delete("/:id",userDeleteController)
-userRoutes.get("/:id",userListOneController)
+userRoutes.get("/",authUser,userListController)
+userRoutes.patch("/:id",authUser,userUpdateController)
+userRoutes.delete("/:id",authUser,userDeleteController)
+userRoutes.get("/:id",authUser,userListOneController)

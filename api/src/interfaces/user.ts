@@ -26,3 +26,10 @@ export interface userLogin{
     email:string
     password:string
 }
+
+export interface updateUser2{
+    name:string
+    email:string
+    phone:string
+    password:string
+}

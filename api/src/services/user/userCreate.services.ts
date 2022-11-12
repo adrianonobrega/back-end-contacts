@@ -3,6 +3,7 @@ import { AppDataSource } from "../../database";
 import { User } from "../../entities/user.entity";
 import bcrypt from "bcrypt"
 
+
 export const userCreateServices = async ({name, email,phone,password}: createUser) => {
 
     const userRepository = AppDataSource.getRepository(User) 
@@ -13,6 +14,7 @@ export const userCreateServices = async ({name, email,phone,password}: createUse
  
     if(alreadyExistsEmail){
       throw new Error("Email already exists")
+      
     }
 
     const user = new User()
@@ -22,7 +24,7 @@ export const userCreateServices = async ({name, email,phone,password}: createUse
     user.phone = phone
     user.password = bcrypt.hashSync(password,10)
     user.created_at = user.created_at
-  
+    await userRepository.save(user)
    const result = {
     id:user.id,
     name: user.name,

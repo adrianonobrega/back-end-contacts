@@ -12,15 +12,15 @@ const userCreateController = async (req: Request, res: Response) => {
         const {name, email,phone,password} = req.body
         const newUser = await userCreateServices({name, email,phone,password})
         res.status(201).json(newUser)
-       }
-   
+    }
     catch(error){
-       if(error instanceof Error){
-           return res.status(400).json({
-               message: error.message
-               })
-           }
-       }
+        if(error instanceof Error){
+            return res.status(400).json({
+                message: error.message
+            })
+        }
+    }
+               
    }
 
    const userListController = async (req: Request, res: Response) => {
