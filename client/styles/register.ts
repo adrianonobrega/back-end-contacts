@@ -16,8 +16,14 @@ position: relative;
 
 h1{
     margin-top:100px;
-    font-family: 'Inter';
+    font-family: 'Conforta';
     margin-bottom:0px
+}
+
+.buttonSair{
+    margin-top:50px;
+    position:absolute;
+    right:300px;
 }
 
 

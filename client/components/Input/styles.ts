@@ -10,7 +10,7 @@ position:relative;
 
 svg{
     position:absolute;
-    top:7px;
+    top:12px;
     left:10px;
 }
 
@@ -21,15 +21,30 @@ label{
     font-size:14px;
 }
 
+h1{
+    font-size:'Inter';
+    
+}
+
 input{
 outline:none;
  border-radius: 50px;
- height:22px;
+ height:40px;
  width:300px;
  padding:14px 30px;
  border: 1px solid #A2CAFF;
  font-size:14px;
 
+}
+
+span{
+    position:relative;
+    top:-20px;
+    color:red;
+}
+
+div{
+    height:0px;
 }
 
 input::placeholder{

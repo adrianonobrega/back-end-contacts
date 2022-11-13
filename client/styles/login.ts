@@ -3,11 +3,12 @@ import styled from 'styled-components'
 
 export const SectionAll = styled.section`
 
-margin:0 auto;
+
 text-align: center;
 position: absolute;
 width:100%;
-background-color:#FDFDFD;
+height:100%;
+background-color:#2EDFFF;
 overflow:hidden;
 
 form{
@@ -22,14 +23,14 @@ h5{
     font-weight:normal;
     color:#212529;
 }
-h1{
+h1{ 
     font-size:24px;
-    font-family: 'Lexend';
+    font-family: 'Conforta';
     font-weight:normal;
     color:#000000;
-    margin-left:-230px;
-    margin-bottom:2px;
-    margin-top:50px;
+    margin-bottom:-20px;
+    margin-top:100px;
+
 }
 h6{
     font-size:14px;
@@ -42,13 +43,22 @@ h6{
 }
 
 h4{
-    font-size:14px;
+    font-size:16px;
     font-family: 'Inter';
-    font-weight:normal;
-    color:#495057;
+    font-weight:bold;
+    color:#F51100;
     margin-top:24px;
     margin-bottom:24px;
    
+}
+
+a{
+    font-family: 'Inter';
+    font-size:20px;
+}
+
+a:hover{
+    color:red;
 }
 
 

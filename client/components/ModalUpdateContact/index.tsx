@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import * as yup from 'yup'
 import { Api } from "../../services/api"
 import { Input } from "../Input"
-import { Modal } from "../ModalContact/styles"
+import { ModalUpdate } from "../ModalUpdateContact/styles"
 
 interface inputRegistration{
     email:string
@@ -15,7 +15,7 @@ interface inputRegistration{
 interface modal{
     setModalUpdate:boolean | any
     returnDataContact:[] | any
-    contact_id:string
+    contact_id:string | any
 }
 
 export const ModalUpdateContact = ({contact_id,setModalUpdate,returnDataContact}:modal) => {
@@ -48,8 +48,8 @@ export const ModalUpdateContact = ({contact_id,setModalUpdate,returnDataContact}
     }
 
     return (
-  <>            <Modal>
-                    <button onClick={closeModal}>X</button>
+  <>            <ModalUpdate>
+                    <h3 onClick={closeModal}>X</h3>
                      <h1>Atualizar Contato</h1>
                 <Formik 
                      
@@ -59,7 +59,6 @@ export const ModalUpdateContact = ({contact_id,setModalUpdate,returnDataContact}
 
                     {() => (
                          <Form>
-                         <h5>Usuario</h5>
                         <Input
                             label="Nome"
                             type="text"
@@ -83,11 +82,11 @@ export const ModalUpdateContact = ({contact_id,setModalUpdate,returnDataContact}
                             error=""
                         />
 
-                        <button>Cadastrar Contato</button>
+                        <button>Atualizar Contato</button>
                          </Form>
                     )}
                 </Formik>
-  </Modal>
+  </ModalUpdate>
    
                
   </>

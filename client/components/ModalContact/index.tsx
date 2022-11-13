@@ -4,6 +4,7 @@ import * as yup from 'yup'
 import { Api } from "../../services/api"
 import { Input } from "../Input"
 import { Modal } from "../ModalContact/styles"
+import Button from "../../components/Button"
 
 interface inputRegistration{
     email:string
@@ -57,7 +58,7 @@ export const ModalContact = ({setModal,returnDataContact}:modal) => {
 
     return (
   <>            <Modal>
-                    <button onClick={closeModal}>X</button>
+                    <h3 onClick={closeModal}>X</h3>
                      <h1>Cadastrar Contato</h1>
                 <Formik 
                      validationSchema={schema}
@@ -67,7 +68,6 @@ export const ModalContact = ({setModal,returnDataContact}:modal) => {
 
                     {({errors}) => (
                          <Form>
-                         <h5>Usuario</h5>
                         <Input
                             label="Nome"
                             type="text"
@@ -91,7 +91,7 @@ export const ModalContact = ({setModal,returnDataContact}:modal) => {
                             error={errors.phone}
                         />
 
-                        <button>Cadastrar Contato</button>
+                        <button className="button" type="submit">Cadastrar Contato</button>
                          </Form>
                     )}
                 </Formik>

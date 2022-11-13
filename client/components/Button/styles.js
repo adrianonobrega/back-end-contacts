@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-    background-color: ${(props) => (props.purpleSchema ? '#6699ff' : '#666699')};
+    background-color: ${(props) => (props.purpleSchema ? '#F57117' : '#666699')};
     color: ${(props) => (props.purpleSchema? '#f5f5f5' : 'white')};
     height: 45px;
     border-radius: 8px;

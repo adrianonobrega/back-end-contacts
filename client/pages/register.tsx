@@ -35,7 +35,7 @@ const Register = () => {
         Api.post(`users/`, data)
             .then((res => {
                   toast.success("Usuario cadastrado com sucesso")
-                navigate.push("/login")
+                navigate.push("/")
             }))
             .catch((err => {
                 toast.error("Email ou senha invalidos")
@@ -43,9 +43,14 @@ const Register = () => {
             }))
     }
 
+    function returnLogin(){
+        navigate.push("/")
+    }
+
     return (
         <>  
             <Section>
+                <Button onClick={returnLogin} className="buttonSair" purpleSchema>Sair</Button>
             <h1>Cadastrar Usuario</h1>
                 <Formik 
                     validationSchema={schema}
@@ -82,7 +87,7 @@ const Register = () => {
                             name="phone"
                             error={errors.phone}
                         />
-                        <Button>Cadastrar</Button>
+                        <Button type="submit">Cadastrar</Button>
                          </Form>
                     )}
                 </Formik>

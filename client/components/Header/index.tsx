@@ -1,6 +1,6 @@
 
 import Link from "next/link"
-import {SectionAll,SectionLi,Img,SectionButton,Div} from "./styles"
+import {SectionAll,SectionLi,SectionButton,Div} from "./styles"
 import { useState,useEffect } from "react"
 import { AuthContext } from "../../providers/auth"
 import { useContext } from "react"
@@ -23,24 +23,25 @@ export const Header = ({user,letter}:HeaderInt) => {
         <SectionAll>
            
        <SectionLi>
+       <div className="divRight"></div>
        
-          <div></div>
-          {auth === false ? <SectionButton><Link legacyBehavior href="/login"><h4>Fazer Login</h4></Link>
-          <Link href="/registration"><button>Cadastrar</button></Link>
-          </SectionButton>
-          : 
+          {auth === true &&
           <>
+          <div className="divAll">
           <Div>
-            <h2>
-                {letter}
-            </h2>
-            </Div>
-            <h6>{user?.name}</h6>
            
-            
+           <h2>
+               {letter}
+           </h2>
+           </Div>
+           <h6>{user?.name}</h6>
+          </div>
+          
           </>
           }
+          <div className="divRight"></div>
        </SectionLi>
+       
         </SectionAll>
     )      
 }
