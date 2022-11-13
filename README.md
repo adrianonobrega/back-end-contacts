@@ -5,7 +5,7 @@
 #### Projeto fullstack com o objetivo de cadastrar contatos associado ao usuario.
 
 ### BackEnd
-baseUrl - http://localhost:9000/
+baseUrl - http://localhost:9000/ <br/>
 yarn install - Instala todas as dependencias do projeto.
 rodar as migrações - yarn typeorm migration:run -d src/database
 rodar a aplicação - yarn dev
