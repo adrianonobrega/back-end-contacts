@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 export const SectionAll = styled.section`
 
+margin:0 auto;
 text-align: center;
 position: absolute;
 width:100%;

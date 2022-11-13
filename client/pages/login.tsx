@@ -1,17 +1,18 @@
-import { yupResolver } from "@hookform/resolvers/yup"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useContext } from "react"
-import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
-import {Formik,Form,Field, useField} from "formik"
+import {Formik,Form} from "formik"
 import {Api} from "../services/api"
 import {Input} from "../components/Input/index"
 import {SectionAll} from "../styles/login"
+import { AuthContext } from "../providers/auth"
+import { useContext } from "react"
+import Button from "../components/Button"
 
 interface inputRegistration{
-    name:string
+    email:string
+    password:string
 }
 
 
@@ -22,21 +23,18 @@ const Login = () => {
         password: yup.string().required('Senha obrigatória')
     })
 
-    const initialValues : inputRegistration = {email:""}
-
-    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
-
-
+    const initialValues : inputRegistration = {email: "",password:""}
+    const {setAuth} = useContext(AuthContext)
 
     const navigate = useRouter()
     const submit = (data: any) => {
-        console.log(data,"dataaaaaaaa")
         Api.post(`users/login`, data)
             .then((res => {
-
-                const { token, id } = res.data
+                
+                const { token, user_id } = res.data
                 localStorage.setItem("token", token)
-                localStorage.setItem("user_id", id)
+                localStorage.setItem("user_id", user_id)
+                setAuth(true)
                 toast.success("Login efetuado com sucesso")
                 navigate.push("/user")
             }))
@@ -49,46 +47,45 @@ const Login = () => {
 
     return (
         <>
-
             <SectionAll>
                
                 <h1>Login</h1>
                 <Formik 
+                    validationSchema={schema}
                      initialValues={initialValues}
                      onSubmit={submit}
-                >
-                     <Form>
-                     <h5>Usuario</h5>
-                    <Input
-                        label="Usuario"
-                        type="text"
-                        placeholder="Digitar Usuario"
-                        name="email"
-                        error={errors.email?.message}
-                    ></Input>
-                    
-                    <Input
-                        label="Senha"
-                        type="password"
-                        placeholder="Digitar Senha"
-                        name="password"
-                        error={errors.password?.message}
-                    ></Input>
+                >   
 
+                    {({errors}) => (
+                         <Form>
+                        
+                        <Input
+                            label="Usuario"
+                            type="text"
+                            placeholder="Digitar Usuario"
+                            name="email"
+                            error={errors.email}
+                       />
+                        
+                        <Input
+                            label="Senha"
+                            type="password"
+                            placeholder="Digitar Senha"
+                            name="password"
+                            error={errors.password}
+                        />
 
-                    <Link href="/senha"><h6>Esqueci minha senha</h6></Link>
-                    <button>Entrar</button>
-                     </Form>
-                    
+                        <Button type="submit" >Entrar</Button>
+                         </Form>
+
+                    )}
                 </Formik>
 
-
                 <h4>Ainda não possui conta?</h4>
-                <button>Cadastrar</button>
+                <Link href="/register">Cadastrar</Link>
 
             </SectionAll>
         </>
-
     )
 }
 
