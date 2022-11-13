@@ -14,6 +14,6 @@ documentação - <br>http://localhost:9000/api-docs<br/>
 
 ### FrontEnd
 baseUrl - http://localhost:3000/<br/>
-instala todas as dependencias do projeto - <br>yarn install<br/>
+instala todas as dependencias do projeto - yarn install<br/>
 roda a aplicação - yarn dev 
 
