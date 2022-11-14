@@ -25,7 +25,7 @@ export interface updateContact{
 }
 
 export interface Contact{
-    name:string
-    email: string
-    phone: string
+    name:string | any
+    email: string | any
+    phone: string | any
 }

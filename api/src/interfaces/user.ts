@@ -23,13 +23,13 @@ export interface updateUser{
 }
 
 export interface userLogin{
-    email:string
-    password:string
+    email:string | any
+    password:string | any
 }
 
 export interface updateUser2{
-    name:string
-    email:string
-    phone:string
-    password:string
+    name:string | any
+    email:string | any
+    phone:string | any
+    password:string | any
 }

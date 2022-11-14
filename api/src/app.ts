@@ -1,8 +1,10 @@
 import express from 'express'
 import { AppDataSource } from './database'
+import "express-async-errors";
 import { router } from './routes'
 import swaggerUi from "swagger-ui-express"
 import swaggerDocument from "../swagger.json"
+import { appErrorMiddleware } from './middleware/appErrorMiddleware'
 
 const app = express()
 const cors = require("cors")
@@ -14,6 +16,8 @@ app.use(express.json())
 
 app.use(router)
 
+app.use(appErrorMiddleware)
+
 AppDataSource.initialize()
     .then(() => {
         console.log("DB test initialized")
@@ -23,6 +27,6 @@ AppDataSource.initialize()
     })
 
 
-app.listen( process.env.PORT || 3000,() => console.log("rodando liso"))
+app.listen( process.env.PORT || 9000,() => console.log("rodando liso"))
 
 export default app

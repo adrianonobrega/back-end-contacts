@@ -1,5 +1,6 @@
 import { AppDataSource } from "../../database"
 import { User } from "../../entities/user.entity"
+import AppError from "../../errors/appError"
 
 export const userDeleteService = async (id:string) => {
 
@@ -10,7 +11,7 @@ export const userDeleteService = async (id:string) => {
         }
     })
     if (!user) {
-        throw new Error("User not found")
+        throw new AppError("User not found")
       }
 
       await userRepository.createQueryBuilder().delete().from(User).where("id = :id", { id }).execute();
