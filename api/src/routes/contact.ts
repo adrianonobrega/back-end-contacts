@@ -8,8 +8,8 @@ import {authUser} from "../middleware/authUser.middleware";
 
 export const contactRoutes = Router()
 
-contactRoutes.post("/:id",authUser,contactCreateController)
+contactRoutes.post("/:user_id",authUser,contactCreateController)
 contactRoutes.get("/",authUser,contactListController)
 contactRoutes.patch("/:id",authUser,contactUpdateController)
 contactRoutes.delete("/:id",authUser,contactDeleteController)
-contactRoutes.get("/:id",authUser,contactListOneController)
+contactRoutes.get("/:user_id",authUser,contactListOneController)
