@@ -2,6 +2,7 @@ import { createUser } from "../../interfaces/user";
 import { AppDataSource } from "../../database";
 import { User } from "../../entities/user.entity";
 import bcrypt from "bcrypt"
+import AppError from "../../errors/appError";
 
 
 export const userCreateServices = async ({name, email,phone,password}: createUser) => {
@@ -13,7 +14,7 @@ export const userCreateServices = async ({name, email,phone,password}: createUse
     const alreadyExistsEmail = users.find((user) => user.email === email)
  
     if(alreadyExistsEmail){
-      throw new Error("Email already exists")
+      throw new AppError("Email already exists",403)
       
     }
 

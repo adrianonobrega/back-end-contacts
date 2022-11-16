@@ -3,6 +3,7 @@ import { AppDataSource } from "../../database";
 import { User } from "../../entities/user.entity";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import AppError from "../../errors/appError";
 
 export const userLoginServices = async({email,password}: userLogin) => {
     const userRepository = AppDataSource.getRepository(User)
@@ -10,12 +11,12 @@ export const userLoginServices = async({email,password}: userLogin) => {
     const account = users.find((user) => user.email === email)
     
     if(!account){
-        throw new Error("Wrong email/password")
+        throw new AppError("Wrong email/password")
     }
     if(!bcrypt.compareSync(password,account.password)){
-        throw new Error("Wrong email/password")
+        throw new AppError("Wrong email/password")
     }
-
+    
     const token = {
         token:  jwt.sign(
             {email:email},

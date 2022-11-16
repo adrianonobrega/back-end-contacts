@@ -51,7 +51,7 @@
                         "description":"Usuario criado com sucesso"
                     },
                     "400":{
-                        "description":"Dados passados incorretamente/email,cpf ou telefone ja estão cadastrados"
+                        "description":"Dados passados incorretamente/ email ou telefone ja estão cadastrados"
                     }
                 }
             },
