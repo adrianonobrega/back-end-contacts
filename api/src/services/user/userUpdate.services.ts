@@ -2,6 +2,7 @@ import { AppDataSource } from "../../database"
 import { User } from "../../entities/user.entity"
 import { updateUser } from "../../interfaces/user"
 import bcrypt from "bcrypt"
+import AppError from "../../errors/appError"
 
 export const userUpdateService = async ({id,email,phone,password,name}: updateUser) => {
 
@@ -12,7 +13,7 @@ export const userUpdateService = async ({id,email,phone,password,name}: updateUs
         }
     })
     if(!findUser){
-        throw new Error("User not found")
+        throw new AppError("User not found")
     }
     const user = new User()
     user.id = user.id

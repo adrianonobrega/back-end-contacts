@@ -1,5 +1,6 @@
 import { AppDataSource } from "../../database"
 import { User } from "../../entities/user.entity"
+import AppError from "../../errors/appError"
 
 export const userListOneService = async (id:string) => {
 
@@ -12,7 +13,7 @@ export const userListOneService = async (id:string) => {
     })
 
     if(!users){
-        throw new Error("User not found")
+        throw new AppError("User not found")
     }
     
     const result = {

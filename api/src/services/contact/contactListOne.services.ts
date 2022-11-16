@@ -1,6 +1,7 @@
 import { AppDataSource } from "../../database"
 import { Contact } from "../../entities/contact.entity"
 import { User } from "../../entities/user.entity"
+import AppError from "../../errors/appError"
 
 export const contactListOneService = async (user_id:string) => {
 
@@ -16,7 +17,7 @@ export const contactListOneService = async (user_id:string) => {
  
 
     if(!user){
-        throw new Error("User not found")
+        throw new AppError("User not found")
     }
    
    const contacts = await contactRepository.find()

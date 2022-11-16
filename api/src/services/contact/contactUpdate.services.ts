@@ -1,6 +1,7 @@
 import { AppDataSource } from "../../database"
 import { updateContact } from "../../interfaces/contact"
 import { Contact } from "../../entities/contact.entity"
+import AppError from "../../errors/appError"
 
 export const contactUpdateService = async ({id,email,phone,name}: updateContact) => {
 
@@ -11,9 +12,9 @@ export const contactUpdateService = async ({id,email,phone,name}: updateContact)
             id:id
         }
     })
-  
+
     if(!contactOne){
-        throw new Error("Contact not found")
+        throw new AppError("Contact not found")
     }
 
     const contact = new Contact()
