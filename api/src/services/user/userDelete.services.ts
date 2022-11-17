@@ -11,7 +11,7 @@ export const userDeleteService = async (id:string) => {
         }
     })
     if (!user) {
-        throw new AppError("User not found")
+        throw new Error("User not found")
       }
 
       await userRepository.createQueryBuilder().delete().from(User).where("id = :id", { id }).execute();
