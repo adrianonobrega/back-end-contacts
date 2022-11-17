@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "ts-node-dev src/app.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest",
+    "build":"tsc",
+    "start":"node dist/src/app.js"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
@@ -35,6 +37,7 @@
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.1.13",
     "supertest": "^6.3.1",
     "swagger": "^0.7.5",

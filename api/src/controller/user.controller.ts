@@ -31,6 +31,7 @@ import { userLoginServices } from "../services/user/userLogin.services"
 }
  
     const userDeleteController = async (req: Request, res: Response) => {
+        
         const {id} = req.params
         const users = await userDeleteService(id)
         res.status(204).json(users)
