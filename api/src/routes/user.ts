@@ -5,7 +5,7 @@ import { userListOneController } from "../controller/user.controller";
 import { userUpdateController } from "../controller/user.controller";
 import { userDeleteController } from "../controller/user.controller";
 import { userLoginController} from "../controller/user.controller";
-import  {authUser}  from "..//middleware/authUser.middleware";
+import  authUser  from "..//middleware/authUser.middleware";
 import { validate } from "../middleware/validatedMiddleware";
 import { userCreateSchema,userUpdateSchema,userLoginSchema } from "../schemas/userSchema";
 
